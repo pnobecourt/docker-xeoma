@@ -1,3 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-exec s6-setuidgid dockeruser minidlnad -f $MINIDLNA_VOL/conf/minidlna.conf -P /dev/null -d -R
