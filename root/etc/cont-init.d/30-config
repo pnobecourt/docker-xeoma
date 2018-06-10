@@ -6,7 +6,7 @@ PASSWORD=${PASSWORD:-admin}
 LANG=${LANG:-en}
 
 # Make folders
-mkdir -p $INSTALL_LOCATION $CONF_LOCATION $DATA_LOCATION
+mkdir -p $INSTALL_LOCATION $CONF_LOCATION $DATA_LOCATION $DOWNLOAD_LOCATION
 
 # Install Xeoma
 if [ $VERSION = "latest" ];then
