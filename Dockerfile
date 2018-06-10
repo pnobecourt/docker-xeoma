@@ -29,7 +29,7 @@ LATEST_BETA_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_beta_linux
 
 # Install Xeoma
 RUN apk update && \
-    apk add --no-cache curl libasound2 wget
+    apk add --no-cache curl wget
 
 # Add files
 ADD /root /
