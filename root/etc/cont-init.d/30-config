@@ -10,10 +10,12 @@ mkdir -p $INSTALL_LOCATION $CONF_LOCATION $DATA_LOCATION
 
 # Install Xeoma
 if [ $VERSION = "latest" ];then
-    curl -L -S $LATEST_STABLE_DOWNLOAD_URL -o $DOWNLOAD_LOCATION/xeoma_latest.tgz
+    #curl -L -S $LATEST_STABLE_DOWNLOAD_URL -o $DOWNLOAD_LOCATION/xeoma_latest.tgz
+    wget -O $DOWNLOAD_LOCATION/xeoma_latest.tgz $LATEST_STABLE_DOWNLOAD_URL
     tar zxvf $DOWNLOAD_LOCATION/xeoma_latest.tgz -C $INSTALL_LOCATION
 else
-    curl -L -S $VERSION_DOWNLOAD_URL -o $DOWNLOAD_LOCATION/xeoma_$VERSION.tgz
+    #curl -L -S $VERSION_DOWNLOAD_URL -o $DOWNLOAD_LOCATION/xeoma_$VERSION.tgz
+    wget -O $DOWNLOAD_LOCATION/xeoma_$VERSION.tgz $VERSION_DOWNLOAD_URL
     tar zxvf $DOWNLOAD_LOCATION/xeoma_$VERSION.tgz -C $INSTALL_LOCATION
 fi
 
