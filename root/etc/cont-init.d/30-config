@@ -1,0 +1,31 @@
+#!/usr/bin/with-contenv bash
+
+# Sets variables defaults
+$VERSION=${VERSION:-latest}
+$PASSWORD=${PASSWORD:-admin}
+$LANG=${LANG:-en}
+
+# Make folders
+mkdir -p $INSTALL_LOCATION $CONF_LOCATION $DATA_LOCATION
+
+# Install Xeoma
+if [ $VERSION = latest ];then
+    curl -L -S $LATEST_STABLE_DOWNLOAD_URL -o $DOWNLOAD_LOCATION/xeoma_latest.tgz
+    tar zxvf $DOWNLOAD_LOCATION/xeoma_latest.tgz -C $INSTALL_LOCATION
+else
+    curl -L -S $VERSION_DOWNLOAD_URL -o $DOWNLOAD_LOCATION/xeoma_$VERSION.tgz
+    tar zxvf $DOWNLOAD_LOCATION/xeoma_$VERSION.tgz -C $INSTALL_LOCATION
+fi
+
+$INSTALL_LOCATION/xeoma.app -install -allmanual -installdir $INSTALL_LOCATION
+
+$INSTALL_LOCATION/xeoma -lang fr
+
+$INSTALL_LOCATION/xeoma -setpassword "$PASSWORD"
+
+$INSTALL_LOCATION/xeoma -showpassword > /dev/null 2>&1
+
+# Fix permissions
+chown -R dockeruser:dockeruser $INSTALL_LOCATION
+chown -R dockeruser:dockeruser $CONF_LOCATION
+chown -R dockeruser:dockeruser $DATA_LOCATION

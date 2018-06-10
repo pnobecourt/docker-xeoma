@@ -1,7 +1,7 @@
 # Download base image
 FROM barbak/alpine-s6:latest
 
-# Define the ARG variables for creating docker image
+# Define the ARG variables
 ARG VERSION
 ARG BUILD_DATE
 ARG VCS_REF
@@ -17,20 +17,15 @@ LABEL org.label-schema.name="Xeoma" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.schema-version="1.0"
 
-# Define the ENV variable for creating docker image
-ENV XEOMA_VOL=/srv/apps/xeoma \
+# Define the ENV variables
+ENV INSTALL_LOCATION=/srv/apps/xeoma \
+CONF_LOCATION=/srv/conf/xeoma \
+DATA_LOCATION=/srv/data/xeoma \
+DOWNLOAD_LOCATION=$CONF_LOCATION/downloads \
 LATEST_VERSIONS_URL=http://felenasoft.com/xeoma/en/download/ \
 VERSION_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_previous_versions/?get=xeoma_linux64_$VERSION.tgz' \
 LATEST_STABLE_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_linux64.tgz' \
-LATEST_BETA_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_beta_linux64.tgz' \
-DOWNLOAD_LOCATION=/config/downloads \
-DEFAULT_CONFIG_FILE=/files/xeoma.conf.default \
-CONFIG_FILE=/config/xeoma.conf \
-FIXED_CONFIG_FILE=/tmp/xeoma.conf \
-INSTALL_LOCATION=/files/xeoma \
-LAST_INSTALLED_BREADCRUMB=$INSTALL_LOCATION/last_installed_version.txt \
-CONFIG_FILE=/config/xeoma.conf \
-MAC_FILE=/config/macs.txt
+LATEST_BETA_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_beta_linux64.tgz'
 
 # Install Xeoma
 RUN apk update && \
@@ -40,10 +35,10 @@ RUN apk update && \
 ADD /root /
 
 # Define Workdir
-WORKDIR $XEOMA_VOL
+WORKDIR $INSTALL_LOCATION
 
 # Define Volumes
-VOLUME [ "/config", "/archive" ]
+VOLUME [ "$CONF_LOCATION", "$DATA_LOCATION" ]
 
 # Ports configuration
 EXPOSE 8090
