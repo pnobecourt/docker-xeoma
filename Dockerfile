@@ -34,9 +34,6 @@ RUN apk update && \
 # Add files
 ADD /root /
 
-# Define Workdir
-WORKDIR $INSTALL_LOCATION
-
 # Define Volumes
 VOLUME [ "$CONF_LOCATION", "$DATA_LOCATION" ]
 
