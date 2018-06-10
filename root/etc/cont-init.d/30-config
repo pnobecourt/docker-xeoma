@@ -1,15 +1,15 @@
 #!/usr/bin/with-contenv bash
 
 # Sets variables defaults
-$VERSION=${VERSION:-latest}
-$PASSWORD=${PASSWORD:-admin}
-$LANG=${LANG:-en}
+VERSION=${VERSION:-latest}
+PASSWORD=${PASSWORD:-admin}
+LANG=${LANG:-en}
 
 # Make folders
 mkdir -p $INSTALL_LOCATION $CONF_LOCATION $DATA_LOCATION
 
 # Install Xeoma
-if [ $VERSION = latest ];then
+if [ $VERSION = "latest" ];then
     curl -L -S $LATEST_STABLE_DOWNLOAD_URL -o $DOWNLOAD_LOCATION/xeoma_latest.tgz
     tar zxvf $DOWNLOAD_LOCATION/xeoma_latest.tgz -C $INSTALL_LOCATION
 else
