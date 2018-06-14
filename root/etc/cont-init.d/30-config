@@ -13,15 +13,17 @@ if [ $VERSION = "latest" ];then
     #curl -L -S $LATEST_STABLE_DOWNLOAD_URL -o $DOWNLOAD_LOCATION/xeoma_latest.tgz
     wget -O $DOWNLOAD_LOCATION/xeoma_latest.tgz $LATEST_STABLE_DOWNLOAD_URL
     tar zxvf $DOWNLOAD_LOCATION/xeoma_latest.tgz -C $INSTALL_LOCATION
+    chmod +x $INSTALL_LOCATION/xeoma.app
 else
     #curl -L -S $VERSION_DOWNLOAD_URL -o $DOWNLOAD_LOCATION/xeoma_$VERSION.tgz
     wget -O $DOWNLOAD_LOCATION/xeoma_$VERSION.tgz $VERSION_DOWNLOAD_URL
     tar zxvf $DOWNLOAD_LOCATION/xeoma_$VERSION.tgz -C $INSTALL_LOCATION
+    chmod +x $INSTALL_LOCATION/xeoma.app
 fi
 
 $INSTALL_LOCATION/xeoma.app -install -allmanual -installdir $INSTALL_LOCATION
 
-$INSTALL_LOCATION/xeoma -lang fr
+$INSTALL_LOCATION/xeoma -lang $LANG
 
 $INSTALL_LOCATION/xeoma -setpassword "$PASSWORD"
 
