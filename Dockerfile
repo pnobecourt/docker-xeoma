@@ -23,7 +23,7 @@ CONF_LOCATION=/srv/conf/xeoma \
 DATA_LOCATION=/srv/data/xeoma \
 DOWNLOAD_LOCATION=$CONF_LOCATION/downloads \
 LATEST_VERSIONS_URL=http://felenasoft.com/xeoma/en/download/ \
-VERSION_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_previous_versions/?get=xeoma_linux64_$VERSION.tgz' \
+VERSION_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_previous_versions/?get=xeoma_linux64_$XEOMA_VERSION.tgz' \
 LATEST_STABLE_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_linux64.tgz' \
 LATEST_BETA_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_beta_linux64.tgz'
 
