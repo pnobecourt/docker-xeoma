@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 # Sets variables defaults
-$XEOMA_VERSION=${$XEOMA_VERSION:-latest}
+XEOMA_VERSION=${$XEOMA_VERSION:-latest}
 PASSWORD=${PASSWORD:-admin}
 LANG=${LANG:-en}
 
