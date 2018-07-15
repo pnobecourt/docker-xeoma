@@ -18,24 +18,20 @@ LABEL org.label-schema.name="Xeoma" \
       org.label-schema.schema-version="1.0"
 
 # Define the ENV variables
-ENV INSTALL_LOCATION=/srv/apps/xeoma \
-CONF_LOCATION=/srv/conf/xeoma \
-DATA_LOCATION=/srv/data/xeoma \
-DOWNLOAD_LOCATION=$CONF_LOCATION/downloads \
+ENV INSTALL_LOCATION=/srv/xeoma \
+CONF_LOCATION=/srv/xeoma/conf \
+DATA_LOCATION=/srv/xeoma/data \
+DOWNLOAD_LOCATION=/tmp/downloads \
 LATEST_VERSIONS_URL=http://felenasoft.com/xeoma/en/download/ \
 VERSION_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_previous_versions/?get=xeoma_linux64_$XEOMA_VERSION.tgz' \
 LATEST_STABLE_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_linux64.tgz' \
 LATEST_BETA_DOWNLOAD_URL='http://felenasoft.com/xeoma/downloads/xeoma_beta_linux64.tgz'
 
-# Install Xeoma
-RUN apk update && \
-    apk add --no-cache curl wget
-
 # Add files
 ADD /root /
 
 # Define Volumes
-VOLUME [ "$CONF_LOCATION", "$DATA_LOCATION" ]
+VOLUME [ "/srv/xeoma/conf", "/srv/xeoma/data" ]
 
 # Ports configuration
 EXPOSE 8090
